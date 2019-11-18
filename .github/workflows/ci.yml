@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: 
+      run: |
         brew install openssl
         swift build -v
     - name: Run tests
