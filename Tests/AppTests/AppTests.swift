@@ -44,7 +44,7 @@ final class AppTests: XCTestCase {
     
     func test_GetSpace() throws {
         let createdResponse = try app.client().post("http://localhost:8080/api/spaces", beforeSend: { request in
-            let space = Space(id: nil, name: "Name", address: "Address")
+            let space = Space(id: nil, name: "Name", address: "Address", phone: "Phone", price: 100, location: Coordinate(latitude: 1, longitude: 1))
             try request.content.encode(space)
         }).wait()
         
@@ -66,7 +66,7 @@ final class AppTests: XCTestCase {
     
     func test_CreateSpace() throws {
         _ = try app.client().post("http://localhost:8080/api/spaces", beforeSend: { request in
-            let space = Space(id: nil, name: "Name", address: "Address")
+            let space = Space(id: nil, name: "Name", address: "Address", phone: "Phone", price: 100, location: Coordinate(latitude: 1, longitude: 1))
             try request.content.encode(space)
         }).wait()
         
@@ -92,7 +92,7 @@ final class AppTests: XCTestCase {
     
     func test_UpdateSpace() throws {
         _ = try app.client().post("http://localhost:8080/api/spaces", beforeSend: { request in
-            let space = Space(id: nil, name: "Name", address: "Address")
+            let space = Space(id: nil, name: "Name", address: "Address", phone: "Phone", price: 100, location: Coordinate(latitude: 1, longitude: 1))
             try request.content.encode(space)
         }).wait()
         
@@ -114,7 +114,7 @@ final class AppTests: XCTestCase {
     }
     
     func test_UpdateSpace_NonExisting() throws {
-        let space = Space(id: 42, name: "Name", address: "Address")
+        let space = Space(id: 42, name: "Name", address: "Address", phone: "Phone", price: 100, location: Coordinate(latitude: 1, longitude: 1))
         
         let response = try app.client().put("http://localhost:8080/api/spaces\(space.requireID())", beforeSend: { request in
             try request.content.encode(space)
@@ -126,7 +126,7 @@ final class AppTests: XCTestCase {
     
     func test_DeleteSpace() throws {
         let createdResponse = try app.client().post("http://localhost:8080/api/spaces", beforeSend: { request in
-            let space = Space(id: nil, name: "Name", address: "Address")
+            let space = Space(id: nil, name: "Name", address: "Address", phone: "Phone", price: 100, location: Coordinate(latitude: 1, longitude: 1))
             try request.content.encode(space)
         }).wait()
         

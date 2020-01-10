@@ -29,5 +29,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var migrations = MigrationConfig()
     migrations.add(model: Todo.self, database: .sqlite)
     migrations.add(model: Space.self, database: .sqlite)
+    migrations.add(model: Review.self, database: .sqlite)
     services.register(migrations)
 }
