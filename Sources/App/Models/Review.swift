@@ -9,8 +9,7 @@ import Vapor
 import FluentSQLite
 
 /// Review of a particular `Space`
-final class Review: SQLiteModel {
-    
+struct Review: SQLiteModel {
     var id: Int?
     var rating: Double
 }

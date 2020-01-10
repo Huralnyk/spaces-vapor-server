@@ -99,7 +99,7 @@ final class AppTests: XCTestCase {
         let response = try app.client().get("http://localhost:8080/api/spaces").wait()
         let spaces = try? response.content.syncDecode([Space].self)
         
-        guard let created = spaces?.first else { XCTFail("There should be one space created"); return }
+        guard var created = spaces?.first else { XCTFail("There should be one space created"); return }
         
         created.name = "Modified"
         let updateResponse = try app.client().put("http://localhost:8080/api/spaces/\(created.requireID())", beforeSend: { request in

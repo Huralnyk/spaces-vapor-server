@@ -25,9 +25,10 @@ struct SpaceController: RouteCollection {
     
     private func updateHandler(_ req: Request) throws -> Future<Space> {
         return try flatMap(req.parameters.next(Space.self), req.content.decode(Space.self), { original, updated in
-            original.name = updated.name
-            original.address = updated.address
-            return original.save(on: req)
+            var copy = original
+            copy.name = updated.name
+            copy.address = updated.address
+            return copy.save(on: req)
         })
     }
     
